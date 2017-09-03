@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Pomodoro Timer | John Chin-Jew</title>
+    <meta name="description" content="A simple Pomodoro productivity timer.">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <style>
+      body {
+        font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        margin: 1.75rem;
+        font-size: 1.15rem;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+        box-shadow: 0 2px 0 -1px;
+      }
+      a:hover { color: blue; }
+    </style>
+  </head>
+  <body>
+    <p>This is a simple <a href="https://en.wikipedia.org/wiki/Pomodoro_Technique" target="_blank">Pomodoro</a> productivity timer.</p>
+    <p>It will beep, telling you when to stop/start working.</p>
+    <p>Made & used by <a href="https://twitter.com/johnchinjew" target="_blank">John Chin-Jew</a>.</p>
+    <script src="https://code.createjs.com/soundjs-0.6.2.min.js"></script>
+    <script>
+      createjs.Sound.registerSound("beep.wav", "_")
+      var run = function() {
+        setTimeout(function () {
+          createjs.Sound.play("_")
+          setTimeout(function() {
+            createjs.Sound.play("_")
+            run()
+          }, 5*60000)
+        }, 25*60000)
+      }
+      run()
+    </script>
+  </body>
+</html>
